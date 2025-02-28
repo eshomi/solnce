@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши фотки</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+            color: #fff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+        }
+
+        .gallery img {
+            width: 300px;
+            height: 300px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .button {
+            margin: 20px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: #fff;
+            background: #ff6f61;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background: #ff4a3d;
+            transform: scale(1.1);
+        }
+
+        audio {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            opacity: 0.7;
+        }
+
+        /* Модальное окно для увеличенных фоток */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 15px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <!-- Вставь свои фотки -->
+        <img src="photo1.jpg" alt="Фото 1" onclick="openModal(this)">
+        <img src="photo2.jpg" alt="Фото 2" onclick="openModal(this)">
+        <img src="32.jpg" alt="Фото 3" onclick="openModal(this)">
+        <img src="photo3.jpg" alt="Фото 4" onclick="openModal(this)">
+        <img src="photo4.jpg" alt="Фото 5" onclick="openModal(this)">
+        <img src="1.PNG" alt="Фото 6" onclick="openModal(this)">
+    </div>
+
+    <button class="button" onclick="window.location.href='index.html'">Назад 💕</button>
+    <button class="button" onclick="window.location.href='message.html'">Моё послание 💌</button>
+
+    <audio autoplay loop>
+        <source src="1.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио элемент.
+    </audio>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="Увеличенное фото">
+    </div>
+
+    <script>
+        // Функция для открытия модального окна
+        function openModal(img) {
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'flex';
+            modalImg.src = img.src;
+        }
+
+        // Функция для закрытия модального окна
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
